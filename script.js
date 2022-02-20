@@ -10,7 +10,6 @@ const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sund'];
 
 const openingHours = {
   [weekdays[3]]: {
-    open: 12,
     close: 22,
   },
   [weekdays[4]]: {
@@ -18,6 +17,7 @@ const openingHours = {
     close: 23,
   },
   [weekdays[5]]: {
+    open: 12,
     open: 0, //Open 24hours
     close: 24,
   },
@@ -51,32 +51,129 @@ const restaurant = {
   },
 };
 
-//Properties Name
-const properties = Object.keys(openingHours);
-console.log(properties);
+const question = new Map([
+  ['quastion', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'Try Again'],
+]);
+console.log(question);
 
-let openStr = `We are open on ${properties.length} days: `;
-for (const day of properties) {
-  openStr += `${day}, `;
+//Convert object to map
+console.log(Object.entries(openingHours));
+const hourMap = new Map(Object.entries(openingHours));
+console.log(hourMap);
+
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
 }
-console.log(openStr);
 
-//Properties Name
-const values = Object.values(openingHours);
-console.log(...values);
+// const answer = Number(prompt('Your answer'));
+const answer = 3;
+console.log(answer);
 
-//Properties Entries
-const entries = Object.entries(openingHours);
-console.log(...entries);
+console.log(question.get(question.get('correct') === answer));
 
-for (const x of entries) {
-  console.log(...x);
-}
-/////////////////////////////////////////////////////////////////////////////////
-//[Key,value]
-for (const [key, { open, close }] of entries) {
-  console.log(`On ${key} we open at ${open} and close at ${close}`);
-}
+//Convert map to array
+console.log([...question]);
+// console.log(question.entries());
+console.log(...[question.keys()]);
+console.log(...[question.values()]);
+
+////////////Map////////////////////////////////////////
+
+// const ordersSet = new Set([
+//   'Pizza',
+//   'Pizza',
+//   'Pizza',
+//   'Risotto',
+//   'Pasta',
+//   'Pizza',
+// ]);
+// console.log(ordersSet);
+
+// console.log(new Set('Josub'));
+
+// console.log(ordersSet.size);
+
+// console.log(ordersSet.has('Pizza'));
+// console.log(ordersSet.has('Kemput'));
+// ordersSet.add('Kemput');
+// ordersSet.delete('Pizza');
+// console.log(ordersSet);
+
+// for (const order of ordersSet) console.log(order);
+
+// //Example
+// const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+// const staffUnique = [...new Set(staff)];
+// console.log(staffUnique);
+// console.log(
+//   new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+// );
+
+// console.log(new Set('josubjacob').size);
+
+// const rest = new Map();
+// rest.set('name', 'Classico italiano');
+// rest.set(2, 'Firenze', 'Italy');
+// console.log(rest.set('City', 'Lisbon,Portugal'));
+
+// rest
+//   .set('categories', ['Italian', 'Pizzaria', 'Vegetatian', 'Organic'])
+//   .set('open', 11)
+//   .set('close', 23)
+//   .set(true, 'We are open :D')
+//   .set(false, 'We are close :D');
+// console.log(rest.get('City'));
+// console.log(rest.get(true));
+
+// const time = 22;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+// console.log(rest.has('categories'));
+// rest.delete(2);
+// // rest.clear();
+// console.log(rest);
+// console.log(rest.size);
+
+// const arr = [1, 2];
+// rest.set(arr, 'Test');
+// rest.set(document.querySelector('h1'), 'Heading');
+// console.log(rest);
+// console.log(rest.size);
+// console.log(rest.get(arr));
+
+///////////////////////////////////////////////////////
+// //Properties Name
+// const properties = Object.keys(openingHours);
+// console.log(properties);
+
+// let openStr = `We are open on ${properties.length} days: `;
+// for (const day of properties) {
+//   openStr += `${day}, `;
+// }
+// console.log(openStr);
+
+// //Properties Name
+// const values = Object.values(openingHours);
+// console.log(...values);
+
+// //Properties Entries
+// const entries = Object.entries(openingHours);
+// console.log(...entries);
+
+// for (const x of entries) {
+//   console.log(...x);
+// }
+// /////////////////////////////////////////////////////////////////////////////////
+// //[Key,value]
+// for (const [key, { open, close }] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
 /////////////////////////////////////////////////////////////////////////////////
 
 // if (restaurant.openingHours && restaurant.openingHours.mon)
